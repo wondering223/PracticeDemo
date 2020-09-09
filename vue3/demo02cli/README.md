@@ -15,9 +15,9 @@ yarn serve
 yarn build
 ```
 
-### Run your unit tests
+### Lints and fixes files
 ```
-yarn test:unit
+yarn lint
 ```
 
 ### Customize configuration
