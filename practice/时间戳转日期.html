@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>时间戳转日期</title>
+  
+</head>
+<body>
+   
+    <button onclick="getStamp()">点我时间戳</button>
+    <button onclick="getTime()">点我日期</button>
+    <script>
+        function timeStampToTime(timeStamp , fn = a=>(a>10 ? "" +a : "0"+a)){
+            timeStamp = timeStamp.length == 10 ? timeStamp*1000 :timeStamp;
+            let date = new Date(timeStamp)
+            var Y= fn(date.getFullYear())
+            var M = fn(date.getMonth()+1)
+            var D = fn(date.getDay())
+            var h = fn(date.getHours())
+            var m = fn(date.getMinutes())
+            var s= fn(date.getSeconds())
+
+            return `${Y}-${M}-${D} ${h}:${m}:${s}`;
+        };
+        // var stamp = Date.parse(new Date());
+        // console.log(stamp);
+        // let p1 = document.getElementById("timesStamp");
+        // p1.innerHTML = "stamp";
+        // // document.getElementById("date").innerHTML = timeStampToTime(stamp);
+        function getStamp(){
+            var stamp = Date.parse(new Date());
+            console.log(stamp)
+        }
+        function getTime(){
+            var stamp = Date.parse(new Date());
+            let  tim = timeStampToTime(stamp)
+            console.log(tim)
+        }
+        
+
+    </script>
+    
+</body>
+
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for</title>
+</head>
+<body>
+    <div id="app">
+        <!-- v-for循环普通数组 -->
+        <p v-for="(item,i) in list">--索引--{{i}}--每一项--{{item}}</p>
+        <br/>
+        <!-- v-for循环对象数组 -->
+        <p v-for="(user,i) in listobj">--id--{{user.id}}--name--{{user.name}}</p>
+        <br/>
+        <!-- 注意，在遍历对象的键值对的时候，除了有 val 和 key,在第三个位置还有一个索引 -->
+        <p v-for="(val,key) in obj">--键是--{{key}}--值是--{{val}}</p>
+        <br/>
+        <!-- in 后面我们放过数组、对象数组、对象，还可以放数字 -->
+        <p v-for="count in 10">这是第{{count}}次循环</p>
+    </div>
+    
+</body>
+<script src="vue.min.js"></script>
+<script>
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            list:[1,2,3,4,5,6,7],
+            listobj:[{id:1,name:"susan1"},
+            {id:1,name:"susan1"},
+            {id:2,name:"susan2"},
+            {id:3,name:"susan3"},
+            {id:4,name:"susan4"},
+            {id:5,name:"susan5"},
+            ],
+            obj:{
+                id:23,
+                name:"susan",
+                age:23,
+                address:"china"
+            }
+        }
+    })
+</script>
+</html>

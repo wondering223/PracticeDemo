@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>flatten</title>
+    <button onclick="change()">点我flatten</button>
+</head>
+
+<body>
+    <script>
+        //递归实现
+        // function flatten(arr) {
+        //     let res = []
+        //     if (!Array.isArray(arr)){
+        //         if(arr%1 == 0){
+        //             res.push(arr)
+        //         }
+        //         else{
+        //             this.$message.error("非数字啊")
+        //         }
+        //     }
+        //     else{
+        //         for (let i=0 ; i<arr.length; i++){
+        //             res = res.concat(flatten(arr[i]))
+        //         }
+        //     }
+        //     return res
+        // }
+        //reduce实现(秀极了)
+        function flatten(arr) {
+            return arr.reduce(function (fst, next) {
+                return fst.concat(Array.isArray(next) ? flatten(next) : next)
+            }, [])
+        }
+
+        function flatten(arr) {
+            return arr.reduce((fst, next) =>
+                fst.concat(Array.isArray(next) ? flatten(next) : next), [])
+        }
+        // function change() {
+        //     let arr1 = [1, [2, [3, 4, [5, 6, 7], 8]], 9]
+        //   
+        //     let ans = flatten(arr1)
+        // }
+        function objToArr(obj) {
+            let res = []
+            let keys = Object.keys(obj)
+            //TODO 类型判断可以更精确
+            if (typeof obj[keys[0]] !== "object") {
+                res.push(obj)
+            } else {
+                keys.forEach(key => res.push(obj[key]))
+            }
+            return res
+        }
+        let obj1={'a':'1','b':'2'};
+        let obj2={0:{'c':'1'},1:{'d':"2"}}
+        function change(){
+            console.log(objToArr(obj2));
+        }
+    </script>
+</body>
+
+</html>

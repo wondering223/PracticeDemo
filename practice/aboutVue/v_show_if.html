@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <div v-if="isShow">{{name}}</div>
+        <!-- v-show点击后该元素消失了，div还在只是变成display:none -->
+        <!-- 当我们需要经常切换某个元素的显示/隐藏时，使用v-show会更加节省性能上的开销 -->
+        <!-- v-if点击后该元素消失了,而且div也不见了，那一行变成了注释，dom元素被删掉了 -->
+        <!-- 如果在运行时条件很少改变，则使用 v-if 较好 -->
+        <button @click="change">切换</button>
+    </div>
+</body>
+<script src="vue.min.js"></script>
+<script>
+    let vm = new Vue({
+        el:"#app",
+        data:{
+            name:"佩琪",
+            isShow:true
+        },
+        methods:{
+            change(){
+                this.isShow = !this.isShow
+            }
+        }
+    })
+</script>
+</html>

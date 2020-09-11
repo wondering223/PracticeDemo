@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>overlap</title>
+</head>
+
+<body>
+    <button onclick="overlap">点我交集</button>
+    <script>
+        const arr1 = [1, 2, 3, 4, 5];
+        const arr2 = [5, 6, 7, 8, 9];
+        // 交集
+        let intersection = arr1.filter(function(val) {
+            return arr2.indexOf(val) > -1
+        })
+        console.log(intersection);
+        // function overlap(arr1,arr2){
+        //     let res = arr1.filter(function (val) {
+        //     return arr2.indexOf(val) > -1
+        //     })
+        // }
+        // console.log(overlap(arr1,arr2))
+
+        //防抖
+        function debounce(fn, delay) {
+            timeout = null;
+            return function() {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => {
+                    fn.apply(this, arguments)
+                }, delay)
+            }
+        }
+
+        function handle() {
+            console.log("防抖：", Math.random())
+        }
+        window.addEventListener("scroll", debounce(handle, 500))
+
+        //节流
+        function save(fn, delay) {
+            let canRun = true
+            return function() {
+                if (!canRun) return;
+                canRun = false
+                setTimeout(() => {
+                    fn.apply(this, arguments)
+                    canRun = true
+                }, delay)
+            }
+        }
+
+        function hello(e) {
+            console.log("节流：", e.target.innerHeight, e.target.innerWidth)
+        }
+        window.addEventListener("resize", save(hello, 500))
+    </script>
+
+</body>
+
+</html>

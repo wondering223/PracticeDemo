@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rgb_16</title>
+</head>
+
+<body>
+    <button onclick="rgb2hexbtn()">rgb转16进制</button>
+    <button onclick="hex2rgbbtn()">16进制转rgb</button>
+    <div style="width:100px;height:100px;background-color: aqua;border-radius: 50%; text-align: center;">
+        圆
+    </div>
+    <script>
+        var str2 = "#ff0000"
+        var str1 = "255,0,0"
+
+        function rgb2hex(str1) {
+            let arr = str1.split(",");
+            let r = parseInt(arr[0]);
+            let g = parseInt(arr[1]);
+            let b = parseInt(arr[2]);
+            var hex = "#" + ((r << 16) + (g << 8) + b).toString(16);
+            return hex;
+        }
+
+        function rgb2hexbtn() {
+            var res = rgb2hex(str1)
+            console.log(res)
+        }
+
+        function hex2rgb(str2) {
+            if (str2 == "") return "";
+            var a = str2.substring(1);
+            a = a.toLowerCase();
+            var b = [];
+            for (let i = 0; i < 3; i++) {
+                b[0] = a.substr(2 * i, 2)
+                b[1] = "0123456789abcdef"
+                b[3] = b[0].substr(0, 1)
+                b[4] = b[0].substr(1, 1)
+                b[10 + i] = b[1].indexOf(b[3]) * 16 + b[1].indexOf(b[4])
+            }
+            return "rgb(" + b[10] + "," + b[11] + "," + b[12] + ")"
+        }
+
+        function hex2rgbbtn() {
+            var ans = hex2rgb(str2)
+            console.log(ans)
+        }
+    </script>
+</body>
+
+</html>
