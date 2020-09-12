@@ -2,7 +2,7 @@
 <div>
     <h1 @click="fn">TODO</h1>
     <!-- 
-     todoliat 三部分组成
+     todolist 三部分组成
     -->
     <div>
         <input type="text" v-model.trim="value" @keyup.enter="add(value)" />
