@@ -1,9 +1,5 @@
 // 正则
-let rgx = /(\d{3})(?=\.)/
+let rgx = /(\d+?)(?=(\d{3})+[\.|$])/g
 
-'9999000.00'.replace(rgx,(val,a,c)=>{
-    console.log(val);
-    console.log(a);
-    console.log(c);
-    return '$1'
-})
+
+console.log('9999000.00'.replace(rgx,"$1,"));
